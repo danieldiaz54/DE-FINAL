@@ -1,0 +1,1134 @@
+﻿
+
+============================== 11:49:22.353904 | 6c18e77f-fbf5-4da6-a397-1d2caef8ec02 ==============================
+[0m11:49:22.353904 [info ] [MainThread]: Running with dbt=1.9.4
+[0m11:49:22.363920 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/state/dbt/logs', 'version_check': 'True', 'profiles_dir': '/workspace/dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt source freshness --project-dir /workspace/dbt --profiles-dir /workspace/dbt', 'static_parser': 'True', 'target_path': '/state/dbt/target', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'False'}
+[0m11:49:22.784249 [info ] [MainThread]: Registered adapter: duckdb=1.9.2
+[0m11:49:22.921600 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m11:49:22.927660 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m11:49:25.429742 [debug] [MainThread]: Wrote artifact WritableManifest to /state/dbt/target/manifest.json
+[0m11:49:25.433433 [debug] [MainThread]: Wrote artifact SemanticManifest to /state/dbt/target/semantic_manifest.json
+[0m11:49:25.467032 [info ] [MainThread]: Found 2 models, 17 data tests, 1 source, 426 macros
+[0m11:49:25.471080 [info ] [MainThread]: 
+[0m11:49:25.471994 [info ] [MainThread]: Concurrency: 1 threads (target='local')
+[0m11:49:25.472813 [info ] [MainThread]: 
+[0m11:49:25.473948 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m11:49:25.480755 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_ventas_analytics'
+[0m11:49:25.520754 [debug] [ThreadPool]: Using duckdb connection "list_ventas_analytics"
+[0m11:49:25.521540 [debug] [ThreadPool]: On list_ventas_analytics: BEGIN
+[0m11:49:25.522493 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m11:49:25.546578 [debug] [ThreadPool]: SQL status: OK in 0.024 seconds
+[0m11:49:25.547505 [debug] [ThreadPool]: Using duckdb connection "list_ventas_analytics"
+[0m11:49:25.548016 [debug] [ThreadPool]: On list_ventas_analytics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "connection_name": "list_ventas_analytics"} */
+select
+      'ventas' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'analytics'
+    and lower(table_catalog) = 'ventas'
+  
+[0m11:49:25.580576 [debug] [ThreadPool]: SQL status: OK in 0.032 seconds
+[0m11:49:25.582928 [debug] [ThreadPool]: On list_ventas_analytics: ROLLBACK
+[0m11:49:25.584118 [debug] [ThreadPool]: Failed to rollback 'list_ventas_analytics'
+[0m11:49:25.584613 [debug] [ThreadPool]: On list_ventas_analytics: Close
+[0m11:49:25.586037 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:25.586656 [debug] [MainThread]: On master: BEGIN
+[0m11:49:25.587205 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m11:49:25.589300 [debug] [MainThread]: SQL status: OK in 0.002 seconds
+[0m11:49:25.589836 [debug] [MainThread]: On master: COMMIT
+[0m11:49:25.590396 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:25.591118 [debug] [MainThread]: On master: COMMIT
+[0m11:49:25.592140 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m11:49:25.592743 [debug] [MainThread]: On master: Close
+[0m11:49:25.599914 [debug] [Thread-1 (]: Began running node source.examen_ventas.ventas_raw.ventas
+[0m11:49:25.600714 [info ] [Thread-1 (]: 1 of 1 START freshness of ventas_raw.ventas .................................... [RUN]
+[0m11:49:25.601779 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_ventas_analytics, now source.examen_ventas.ventas_raw.ventas)
+[0m11:49:25.602260 [debug] [Thread-1 (]: Began compiling node source.examen_ventas.ventas_raw.ventas
+[0m11:49:25.602720 [debug] [Thread-1 (]: Began executing node source.examen_ventas.ventas_raw.ventas
+[0m11:49:25.603513 [debug] [Thread-1 (]: Using duckdb connection "source.examen_ventas.ventas_raw.ventas"
+[0m11:49:25.604131 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: BEGIN
+[0m11:49:25.604576 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:25.606986 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:25.607493 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: COMMIT
+[0m11:49:25.608047 [debug] [Thread-1 (]: Using duckdb connection "source.examen_ventas.ventas_raw.ventas"
+[0m11:49:25.608468 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: COMMIT
+[0m11:49:25.609384 [debug] [Thread-1 (]: SQL status: OK in 0.000 seconds
+[0m11:49:25.618680 [debug] [Thread-1 (]: Using duckdb connection "source.examen_ventas.ventas_raw.ventas"
+[0m11:49:25.619308 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "source.examen_ventas.ventas_raw.ventas"} */
+select
+      max(_loaded_at) as max_loaded_at,
+      now() as snapshotted_at
+    from "ventas"."raw"."ventas"
+    
+  
+[0m11:49:25.621703 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:25.623788 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: Close
+[0m11:49:25.626026 [info ] [Thread-1 (]: 1 of 1 PASS freshness of ventas_raw.ventas ..................................... [[32mPASS[0m in 0.02s]
+[0m11:49:25.626950 [debug] [Thread-1 (]: Finished running node source.examen_ventas.ventas_raw.ventas
+[0m11:49:25.629320 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:25.629823 [debug] [MainThread]: On master: BEGIN
+[0m11:49:25.630201 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m11:49:25.632050 [debug] [MainThread]: SQL status: OK in 0.002 seconds
+[0m11:49:25.632524 [debug] [MainThread]: On master: COMMIT
+[0m11:49:25.633002 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:25.633515 [debug] [MainThread]: On master: COMMIT
+[0m11:49:25.634422 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m11:49:25.634929 [debug] [MainThread]: On master: Close
+[0m11:49:25.635822 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m11:49:25.636227 [debug] [MainThread]: Connection 'source.examen_ventas.ventas_raw.ventas' was properly closed.
+[0m11:49:25.636669 [info ] [MainThread]: 
+[0m11:49:25.637389 [info ] [MainThread]: Finished running 1 source in 0 hours 0 minutes and 0.16 seconds (0.16s).
+[0m11:49:25.664781 [debug] [MainThread]: Wrote artifact WritableManifest to /state/dbt/target/manifest.json
+[0m11:49:25.667640 [debug] [MainThread]: Wrote artifact SemanticManifest to /state/dbt/target/semantic_manifest.json
+[0m11:49:25.673665 [debug] [MainThread]: Wrote artifact FreshnessResult to /state/dbt/target/sources.json
+[0m11:49:25.674125 [info ] [MainThread]: Done.
+[0m11:49:25.676610 [debug] [MainThread]: Resource report: {"command_name": "freshness", "command_success": true, "command_wall_clock_time": 3.3948393, "process_in_blocks": "0", "process_kernel_time": 0.851217, "process_mem_max_rss": "147976", "process_out_blocks": "0", "process_user_time": 4.819566}
+[0m11:49:25.677512 [debug] [MainThread]: Command `dbt source freshness` succeeded at 11:49:25.677345 after 3.40 seconds
+[0m11:49:25.678109 [debug] [MainThread]: Flushing usage events
+
+
+============================== 11:49:34.902245 | 6551f8e7-8b41-4204-9fed-8ba44dc2fd94 ==============================
+[0m11:49:34.902245 [info ] [MainThread]: Running with dbt=1.9.4
+[0m11:49:34.919465 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/workspace/dbt', 'log_path': '/state/dbt/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt build --project-dir /workspace/dbt --profiles-dir /workspace/dbt', 'introspect': 'True', 'static_parser': 'True', 'target_path': '/state/dbt/target', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'False'}
+[0m11:49:35.524263 [info ] [MainThread]: Registered adapter: duckdb=1.9.2
+[0m11:49:35.697691 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m11:49:36.149994 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m11:49:36.151108 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m11:49:36.408211 [debug] [MainThread]: Wrote artifact WritableManifest to /state/dbt/target/manifest.json
+[0m11:49:36.412366 [debug] [MainThread]: Wrote artifact SemanticManifest to /state/dbt/target/semantic_manifest.json
+[0m11:49:36.461767 [info ] [MainThread]: Found 2 models, 17 data tests, 1 source, 426 macros
+[0m11:49:36.466172 [info ] [MainThread]: 
+[0m11:49:36.466900 [info ] [MainThread]: Concurrency: 1 threads (target='local')
+[0m11:49:36.467420 [info ] [MainThread]: 
+[0m11:49:36.468265 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m11:49:36.475999 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_ventas'
+[0m11:49:36.516016 [debug] [ThreadPool]: Using duckdb connection "list_ventas"
+[0m11:49:36.516658 [debug] [ThreadPool]: On list_ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "connection_name": "list_ventas"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"ventas"'
+    
+  
+  
+[0m11:49:36.517308 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m11:49:36.541484 [debug] [ThreadPool]: SQL status: OK in 0.024 seconds
+[0m11:49:36.543332 [debug] [ThreadPool]: On list_ventas: Close
+[0m11:49:36.544714 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_ventas, now create_ventas_analytics)
+[0m11:49:36.545488 [debug] [ThreadPool]: Creating schema "database: "ventas"
+schema: "analytics"
+"
+[0m11:49:36.556117 [debug] [ThreadPool]: Using duckdb connection "create_ventas_analytics"
+[0m11:49:36.556875 [debug] [ThreadPool]: On create_ventas_analytics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "connection_name": "create_ventas_analytics"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='ventas'
+        and type='sqlite'
+    
+  
+[0m11:49:36.557546 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m11:49:36.561111 [debug] [ThreadPool]: SQL status: OK in 0.003 seconds
+[0m11:49:36.562857 [debug] [ThreadPool]: Using duckdb connection "create_ventas_analytics"
+[0m11:49:36.563299 [debug] [ThreadPool]: On create_ventas_analytics: BEGIN
+[0m11:49:36.564287 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m11:49:36.564724 [debug] [ThreadPool]: Using duckdb connection "create_ventas_analytics"
+[0m11:49:36.565879 [debug] [ThreadPool]: On create_ventas_analytics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "connection_name": "create_ventas_analytics"} */
+
+    
+    
+        create schema if not exists "ventas"."analytics"
+    
+[0m11:49:36.568306 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m11:49:36.570216 [debug] [ThreadPool]: On create_ventas_analytics: COMMIT
+[0m11:49:36.570969 [debug] [ThreadPool]: Using duckdb connection "create_ventas_analytics"
+[0m11:49:36.571621 [debug] [ThreadPool]: On create_ventas_analytics: COMMIT
+[0m11:49:36.582987 [debug] [ThreadPool]: SQL status: OK in 0.011 seconds
+[0m11:49:36.583702 [debug] [ThreadPool]: On create_ventas_analytics: Close
+[0m11:49:36.586190 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_ventas_analytics, now list_ventas_analytics)
+[0m11:49:36.594961 [debug] [ThreadPool]: Using duckdb connection "list_ventas_analytics"
+[0m11:49:36.595532 [debug] [ThreadPool]: On list_ventas_analytics: BEGIN
+[0m11:49:36.596036 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m11:49:36.599124 [debug] [ThreadPool]: SQL status: OK in 0.003 seconds
+[0m11:49:36.600087 [debug] [ThreadPool]: Using duckdb connection "list_ventas_analytics"
+[0m11:49:36.600828 [debug] [ThreadPool]: On list_ventas_analytics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "connection_name": "list_ventas_analytics"} */
+select
+      'ventas' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'analytics'
+    and lower(table_catalog) = 'ventas'
+  
+[0m11:49:36.628606 [debug] [ThreadPool]: SQL status: OK in 0.027 seconds
+[0m11:49:36.631204 [debug] [ThreadPool]: On list_ventas_analytics: ROLLBACK
+[0m11:49:36.632692 [debug] [ThreadPool]: Failed to rollback 'list_ventas_analytics'
+[0m11:49:36.633460 [debug] [ThreadPool]: On list_ventas_analytics: Close
+[0m11:49:36.635304 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:36.635815 [debug] [MainThread]: On master: BEGIN
+[0m11:49:36.636489 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m11:49:36.638742 [debug] [MainThread]: SQL status: OK in 0.002 seconds
+[0m11:49:36.639523 [debug] [MainThread]: On master: COMMIT
+[0m11:49:36.640170 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:36.640853 [debug] [MainThread]: On master: COMMIT
+[0m11:49:36.642259 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m11:49:36.642856 [debug] [MainThread]: On master: Close
+[0m11:49:36.649711 [debug] [Thread-1 (]: Began running node test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840
+[0m11:49:36.650488 [info ] [Thread-1 (]: 1 of 19 START test source_not_null_ventas_raw_ventas__loaded_at ................ [RUN]
+[0m11:49:36.651592 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_ventas_analytics, now test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840)
+[0m11:49:36.652176 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840
+[0m11:49:36.679357 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840"
+[0m11:49:36.683321 [debug] [Thread-1 (]: Began executing node test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840
+[0m11:49:36.722568 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840"
+[0m11:49:36.727126 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840"
+[0m11:49:36.727999 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840: BEGIN
+[0m11:49:36.728577 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:36.730700 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.731321 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840"
+[0m11:49:36.731872 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select _loaded_at
+from "ventas"."raw"."ventas"
+where _loaded_at is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:36.735402 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.742693 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840: ROLLBACK
+[0m11:49:36.743993 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840'
+[0m11:49:36.744607 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840: Close
+[0m11:49:36.745965 [info ] [Thread-1 (]: 1 of 19 PASS source_not_null_ventas_raw_ventas__loaded_at ...................... [[32mPASS[0m in 0.09s]
+[0m11:49:36.747076 [debug] [Thread-1 (]: Finished running node test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840
+[0m11:49:36.747776 [debug] [Thread-1 (]: Began running node test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba
+[0m11:49:36.748547 [info ] [Thread-1 (]: 2 of 19 START test source_not_null_ventas_raw_ventas_cantidad .................. [RUN]
+[0m11:49:36.749466 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.source_not_null_ventas_raw_ventas__loaded_at.778c778840, now test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba)
+[0m11:49:36.750115 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba
+[0m11:49:36.756877 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba"
+[0m11:49:36.757960 [debug] [Thread-1 (]: Began executing node test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba
+[0m11:49:36.762134 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba"
+[0m11:49:36.763112 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba"
+[0m11:49:36.763644 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba: BEGIN
+[0m11:49:36.764149 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:36.766636 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.767643 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba"
+[0m11:49:36.768564 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select cantidad
+from "ventas"."raw"."ventas"
+where cantidad is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:36.771439 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.774658 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba: ROLLBACK
+[0m11:49:36.775761 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba'
+[0m11:49:36.776732 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba: Close
+[0m11:49:36.778416 [info ] [Thread-1 (]: 2 of 19 PASS source_not_null_ventas_raw_ventas_cantidad ........................ [[32mPASS[0m in 0.03s]
+[0m11:49:36.780134 [debug] [Thread-1 (]: Finished running node test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba
+[0m11:49:36.781625 [debug] [Thread-1 (]: Began running node test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2
+[0m11:49:36.782818 [info ] [Thread-1 (]: 3 of 19 START test source_not_null_ventas_raw_ventas_fecha_venta ............... [RUN]
+[0m11:49:36.784740 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.source_not_null_ventas_raw_ventas_cantidad.43afc6a7ba, now test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2)
+[0m11:49:36.785899 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2
+[0m11:49:36.792792 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2"
+[0m11:49:36.793763 [debug] [Thread-1 (]: Began executing node test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2
+[0m11:49:36.797623 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2"
+[0m11:49:36.798736 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2"
+[0m11:49:36.799546 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2: BEGIN
+[0m11:49:36.800099 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:36.801950 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.802642 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2"
+[0m11:49:36.803238 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select fecha_venta
+from "ventas"."raw"."ventas"
+where fecha_venta is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:36.805302 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:36.807412 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2: ROLLBACK
+[0m11:49:36.808230 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2'
+[0m11:49:36.808806 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2: Close
+[0m11:49:36.809960 [info ] [Thread-1 (]: 3 of 19 PASS source_not_null_ventas_raw_ventas_fecha_venta ..................... [[32mPASS[0m in 0.03s]
+[0m11:49:36.811071 [debug] [Thread-1 (]: Finished running node test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2
+[0m11:49:36.811783 [debug] [Thread-1 (]: Began running node test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7
+[0m11:49:36.812597 [info ] [Thread-1 (]: 4 of 19 START test source_not_null_ventas_raw_ventas_id_venta .................. [RUN]
+[0m11:49:36.813738 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.source_not_null_ventas_raw_ventas_fecha_venta.44999fd6c2, now test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7)
+[0m11:49:36.814312 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7
+[0m11:49:36.820208 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7"
+[0m11:49:36.821169 [debug] [Thread-1 (]: Began executing node test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7
+[0m11:49:36.824444 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7"
+[0m11:49:36.825308 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7"
+[0m11:49:36.825827 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7: BEGIN
+[0m11:49:36.826291 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:36.828208 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.828740 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7"
+[0m11:49:36.829268 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select id_venta
+from "ventas"."raw"."ventas"
+where id_venta is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:36.831187 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:36.833347 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7: ROLLBACK
+[0m11:49:36.834189 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7'
+[0m11:49:36.834715 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7: Close
+[0m11:49:36.835698 [info ] [Thread-1 (]: 4 of 19 PASS source_not_null_ventas_raw_ventas_id_venta ........................ [[32mPASS[0m in 0.02s]
+[0m11:49:36.837095 [debug] [Thread-1 (]: Finished running node test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7
+[0m11:49:36.838122 [debug] [Thread-1 (]: Began running node test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18
+[0m11:49:36.839016 [info ] [Thread-1 (]: 5 of 19 START test source_not_null_ventas_raw_ventas_precio_unitario ........... [RUN]
+[0m11:49:36.839779 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.source_not_null_ventas_raw_ventas_id_venta.b061a16ac7, now test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18)
+[0m11:49:36.840306 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18
+[0m11:49:36.846359 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18"
+[0m11:49:36.847176 [debug] [Thread-1 (]: Began executing node test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18
+[0m11:49:36.850569 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18"
+[0m11:49:36.851344 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18"
+[0m11:49:36.851895 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18: BEGIN
+[0m11:49:36.852406 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:36.854074 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.854565 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18"
+[0m11:49:36.855049 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select precio_unitario
+from "ventas"."raw"."ventas"
+where precio_unitario is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:36.857125 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:36.859475 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18: ROLLBACK
+[0m11:49:36.860240 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18'
+[0m11:49:36.860734 [debug] [Thread-1 (]: On test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18: Close
+[0m11:49:36.861686 [info ] [Thread-1 (]: 5 of 19 PASS source_not_null_ventas_raw_ventas_precio_unitario ................. [[32mPASS[0m in 0.02s]
+[0m11:49:36.862509 [debug] [Thread-1 (]: Finished running node test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18
+[0m11:49:36.863125 [debug] [Thread-1 (]: Began running node test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5
+[0m11:49:36.863955 [info ] [Thread-1 (]: 6 of 19 START test source_unique_ventas_raw_ventas_id_venta .................... [RUN]
+[0m11:49:36.864625 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.source_not_null_ventas_raw_ventas_precio_unitario.da4b53de18, now test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5)
+[0m11:49:36.865298 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5
+[0m11:49:36.874328 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5"
+[0m11:49:36.875671 [debug] [Thread-1 (]: Began executing node test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5
+[0m11:49:36.879030 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5"
+[0m11:49:36.879781 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5"
+[0m11:49:36.880321 [debug] [Thread-1 (]: On test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5: BEGIN
+[0m11:49:36.880832 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:36.882796 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:36.883360 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5"
+[0m11:49:36.883838 [debug] [Thread-1 (]: On test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    id_venta as unique_field,
+    count(*) as n_records
+
+from "ventas"."raw"."ventas"
+where id_venta is not null
+group by id_venta
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:36.887266 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m11:49:36.889397 [debug] [Thread-1 (]: On test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5: ROLLBACK
+[0m11:49:36.890375 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5'
+[0m11:49:36.890925 [debug] [Thread-1 (]: On test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5: Close
+[0m11:49:36.891927 [info ] [Thread-1 (]: 6 of 19 PASS source_unique_ventas_raw_ventas_id_venta .......................... [[32mPASS[0m in 0.03s]
+[0m11:49:36.892775 [debug] [Thread-1 (]: Finished running node test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5
+[0m11:49:36.894505 [debug] [Thread-1 (]: Began running node model.examen_ventas.stg_ventas
+[0m11:49:36.895189 [info ] [Thread-1 (]: 7 of 19 START sql table model analytics.stg_ventas ............................. [RUN]
+[0m11:49:36.895924 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.source_unique_ventas_raw_ventas_id_venta.11db42d5b5, now model.examen_ventas.stg_ventas)
+[0m11:49:36.896469 [debug] [Thread-1 (]: Began compiling node model.examen_ventas.stg_ventas
+[0m11:49:36.900329 [debug] [Thread-1 (]: Writing injected SQL for node "model.examen_ventas.stg_ventas"
+[0m11:49:36.901367 [debug] [Thread-1 (]: Began executing node model.examen_ventas.stg_ventas
+[0m11:49:37.019406 [debug] [Thread-1 (]: Writing runtime sql for node "model.examen_ventas.stg_ventas"
+[0m11:49:37.020269 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.stg_ventas"
+[0m11:49:37.020694 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: BEGIN
+[0m11:49:37.021199 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.022766 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.023233 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.stg_ventas"
+[0m11:49:37.023636 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "model.examen_ventas.stg_ventas"} */
+
+  
+    
+    
+
+    create  table
+      "ventas"."analytics"."stg_ventas__dbt_tmp"
+  
+    as (
+      select
+    id_venta,
+    fecha_venta,
+    cantidad,
+    precio_unitario,
+    _loaded_at
+from "ventas"."raw"."ventas"
+    );
+  
+  
+[0m11:49:37.025589 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.032862 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.stg_ventas"
+[0m11:49:37.033599 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "model.examen_ventas.stg_ventas"} */
+alter table "ventas"."analytics"."stg_ventas__dbt_tmp" rename to "stg_ventas"
+[0m11:49:37.034911 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.049811 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: COMMIT
+[0m11:49:37.050419 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.stg_ventas"
+[0m11:49:37.050816 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: COMMIT
+[0m11:49:37.055253 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m11:49:37.061932 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.stg_ventas"
+[0m11:49:37.062788 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "model.examen_ventas.stg_ventas"} */
+drop table if exists "ventas"."analytics"."stg_ventas__dbt_backup" cascade
+[0m11:49:37.064551 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.066405 [debug] [Thread-1 (]: On model.examen_ventas.stg_ventas: Close
+[0m11:49:37.070581 [info ] [Thread-1 (]: 7 of 19 OK created sql table model analytics.stg_ventas ........................ [[32mOK[0m in 0.17s]
+[0m11:49:37.071701 [debug] [Thread-1 (]: Finished running node model.examen_ventas.stg_ventas
+[0m11:49:37.073669 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19
+[0m11:49:37.074216 [info ] [Thread-1 (]: 8 of 19 START test not_null_stg_ventas_cantidad ................................ [RUN]
+[0m11:49:37.074878 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.examen_ventas.stg_ventas, now test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19)
+[0m11:49:37.075322 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19
+[0m11:49:37.080464 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19"
+[0m11:49:37.082238 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19
+[0m11:49:37.085359 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19"
+[0m11:49:37.087148 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19"
+[0m11:49:37.087647 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19: BEGIN
+[0m11:49:37.088069 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.090011 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.090589 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19"
+[0m11:49:37.091454 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select cantidad
+from "ventas"."analytics"."stg_ventas"
+where cantidad is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.094239 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.095988 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19: ROLLBACK
+[0m11:49:37.096666 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19'
+[0m11:49:37.097317 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19: Close
+[0m11:49:37.098152 [info ] [Thread-1 (]: 8 of 19 PASS not_null_stg_ventas_cantidad ...................................... [[32mPASS[0m in 0.02s]
+[0m11:49:37.099060 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19
+[0m11:49:37.099634 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998
+[0m11:49:37.100461 [info ] [Thread-1 (]: 9 of 19 START test not_null_stg_ventas_fecha_venta ............................. [RUN]
+[0m11:49:37.101195 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_stg_ventas_cantidad.07c9fe8b19, now test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998)
+[0m11:49:37.101661 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998
+[0m11:49:37.108334 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998"
+[0m11:49:37.109434 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998
+[0m11:49:37.112418 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998"
+[0m11:49:37.113155 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998"
+[0m11:49:37.113593 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998: BEGIN
+[0m11:49:37.114060 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.115864 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.116424 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998"
+[0m11:49:37.116862 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select fecha_venta
+from "ventas"."analytics"."stg_ventas"
+where fecha_venta is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.118615 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.120365 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998: ROLLBACK
+[0m11:49:37.121126 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998'
+[0m11:49:37.121582 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998: Close
+[0m11:49:37.122413 [info ] [Thread-1 (]: 9 of 19 PASS not_null_stg_ventas_fecha_venta ................................... [[32mPASS[0m in 0.02s]
+[0m11:49:37.123197 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998
+[0m11:49:37.123737 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be
+[0m11:49:37.124448 [info ] [Thread-1 (]: 10 of 19 START test not_null_stg_ventas_id_venta ............................... [RUN]
+[0m11:49:37.125187 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_stg_ventas_fecha_venta.45981ae998, now test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be)
+[0m11:49:37.125661 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be
+[0m11:49:37.130786 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be"
+[0m11:49:37.131553 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be
+[0m11:49:37.134529 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be"
+[0m11:49:37.135331 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be"
+[0m11:49:37.135789 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be: BEGIN
+[0m11:49:37.136273 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.138292 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.138789 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be"
+[0m11:49:37.139301 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select id_venta
+from "ventas"."analytics"."stg_ventas"
+where id_venta is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.141052 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.142798 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be: ROLLBACK
+[0m11:49:37.143427 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be'
+[0m11:49:37.143924 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be: Close
+[0m11:49:37.144719 [info ] [Thread-1 (]: 10 of 19 PASS not_null_stg_ventas_id_venta ..................................... [[32mPASS[0m in 0.02s]
+[0m11:49:37.145720 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be
+[0m11:49:37.146303 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1
+[0m11:49:37.147038 [info ] [Thread-1 (]: 11 of 19 START test not_null_stg_ventas_precio_unitario ........................ [RUN]
+[0m11:49:37.147782 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_stg_ventas_id_venta.13dc2a03be, now test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1)
+[0m11:49:37.148286 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1
+[0m11:49:37.154111 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1"
+[0m11:49:37.154872 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1
+[0m11:49:37.157742 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1"
+[0m11:49:37.158462 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1"
+[0m11:49:37.158936 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1: BEGIN
+[0m11:49:37.159349 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.161005 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.161555 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1"
+[0m11:49:37.162073 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select precio_unitario
+from "ventas"."analytics"."stg_ventas"
+where precio_unitario is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.163808 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.165689 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1: ROLLBACK
+[0m11:49:37.166424 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1'
+[0m11:49:37.166954 [debug] [Thread-1 (]: On test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1: Close
+[0m11:49:37.168031 [info ] [Thread-1 (]: 11 of 19 PASS not_null_stg_ventas_precio_unitario .............................. [[32mPASS[0m in 0.02s]
+[0m11:49:37.169303 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1
+[0m11:49:37.170246 [debug] [Thread-1 (]: Began running node test.examen_ventas.unique_stg_ventas_id_venta.80234f8744
+[0m11:49:37.171421 [info ] [Thread-1 (]: 12 of 19 START test unique_stg_ventas_id_venta ................................. [RUN]
+[0m11:49:37.172505 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_stg_ventas_precio_unitario.a4ffbcf3e1, now test.examen_ventas.unique_stg_ventas_id_venta.80234f8744)
+[0m11:49:37.173097 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.unique_stg_ventas_id_venta.80234f8744
+[0m11:49:37.180379 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.unique_stg_ventas_id_venta.80234f8744"
+[0m11:49:37.181070 [debug] [Thread-1 (]: Began executing node test.examen_ventas.unique_stg_ventas_id_venta.80234f8744
+[0m11:49:37.183836 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.unique_stg_ventas_id_venta.80234f8744"
+[0m11:49:37.184671 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.unique_stg_ventas_id_venta.80234f8744"
+[0m11:49:37.185155 [debug] [Thread-1 (]: On test.examen_ventas.unique_stg_ventas_id_venta.80234f8744: BEGIN
+[0m11:49:37.185633 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.188033 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.188864 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.unique_stg_ventas_id_venta.80234f8744"
+[0m11:49:37.189906 [debug] [Thread-1 (]: On test.examen_ventas.unique_stg_ventas_id_venta.80234f8744: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.unique_stg_ventas_id_venta.80234f8744"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    id_venta as unique_field,
+    count(*) as n_records
+
+from "ventas"."analytics"."stg_ventas"
+where id_venta is not null
+group by id_venta
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.193104 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.195029 [debug] [Thread-1 (]: On test.examen_ventas.unique_stg_ventas_id_venta.80234f8744: ROLLBACK
+[0m11:49:37.195746 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.unique_stg_ventas_id_venta.80234f8744'
+[0m11:49:37.196220 [debug] [Thread-1 (]: On test.examen_ventas.unique_stg_ventas_id_venta.80234f8744: Close
+[0m11:49:37.197021 [info ] [Thread-1 (]: 12 of 19 PASS unique_stg_ventas_id_venta ....................................... [[32mPASS[0m in 0.02s]
+[0m11:49:37.197884 [debug] [Thread-1 (]: Finished running node test.examen_ventas.unique_stg_ventas_id_venta.80234f8744
+[0m11:49:37.198447 [debug] [Thread-1 (]: Began running node test.examen_ventas.valores_ventas
+[0m11:49:37.199164 [info ] [Thread-1 (]: 13 of 19 START test valores_ventas ............................................. [RUN]
+[0m11:49:37.199966 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.unique_stg_ventas_id_venta.80234f8744, now test.examen_ventas.valores_ventas)
+[0m11:49:37.200460 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.valores_ventas
+[0m11:49:37.203944 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.valores_ventas"
+[0m11:49:37.205583 [debug] [Thread-1 (]: Began executing node test.examen_ventas.valores_ventas
+[0m11:49:37.208789 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.valores_ventas"
+[0m11:49:37.211253 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.valores_ventas"
+[0m11:49:37.211780 [debug] [Thread-1 (]: On test.examen_ventas.valores_ventas: BEGIN
+[0m11:49:37.212213 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.214158 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.214651 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.valores_ventas"
+[0m11:49:37.215649 [debug] [Thread-1 (]: On test.examen_ventas.valores_ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.valores_ventas"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  select id_venta from "ventas"."analytics"."stg_ventas"
+where cantidad <= 0 or precio_unitario < 0
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.218170 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.220094 [debug] [Thread-1 (]: On test.examen_ventas.valores_ventas: ROLLBACK
+[0m11:49:37.220742 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.valores_ventas'
+[0m11:49:37.221291 [debug] [Thread-1 (]: On test.examen_ventas.valores_ventas: Close
+[0m11:49:37.222135 [info ] [Thread-1 (]: 13 of 19 PASS valores_ventas ................................................... [[32mPASS[0m in 0.02s]
+[0m11:49:37.223040 [debug] [Thread-1 (]: Finished running node test.examen_ventas.valores_ventas
+[0m11:49:37.224449 [debug] [Thread-1 (]: Began running node model.examen_ventas.ventas_diarias
+[0m11:49:37.225471 [info ] [Thread-1 (]: 14 of 19 START sql table model analytics.ventas_diarias ........................ [RUN]
+[0m11:49:37.226302 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.valores_ventas, now model.examen_ventas.ventas_diarias)
+[0m11:49:37.226970 [debug] [Thread-1 (]: Began compiling node model.examen_ventas.ventas_diarias
+[0m11:49:37.230837 [debug] [Thread-1 (]: Writing injected SQL for node "model.examen_ventas.ventas_diarias"
+[0m11:49:37.231687 [debug] [Thread-1 (]: Began executing node model.examen_ventas.ventas_diarias
+[0m11:49:37.235873 [debug] [Thread-1 (]: Writing runtime sql for node "model.examen_ventas.ventas_diarias"
+[0m11:49:37.236677 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.ventas_diarias"
+[0m11:49:37.237278 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: BEGIN
+[0m11:49:37.237768 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.239639 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.240112 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.ventas_diarias"
+[0m11:49:37.240588 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "model.examen_ventas.ventas_diarias"} */
+
+  
+    
+    
+
+    create  table
+      "ventas"."analytics"."ventas_diarias__dbt_tmp"
+  
+    as (
+      select
+    fecha_venta,
+    count(*) as numero_ventas,
+    sum(cantidad) as unidades_vendidas,
+    cast(sum(cantidad * precio_unitario) as decimal(12, 2)) as ingreso_total
+from "ventas"."analytics"."stg_ventas"
+group by fecha_venta
+order by fecha_venta
+    );
+  
+  
+[0m11:49:37.244178 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m11:49:37.248061 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.ventas_diarias"
+[0m11:49:37.248554 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "model.examen_ventas.ventas_diarias"} */
+alter table "ventas"."analytics"."ventas_diarias__dbt_tmp" rename to "ventas_diarias"
+[0m11:49:37.249734 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.251912 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: COMMIT
+[0m11:49:37.252641 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.ventas_diarias"
+[0m11:49:37.253376 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: COMMIT
+[0m11:49:37.258025 [debug] [Thread-1 (]: SQL status: OK in 0.004 seconds
+[0m11:49:37.261316 [debug] [Thread-1 (]: Using duckdb connection "model.examen_ventas.ventas_diarias"
+[0m11:49:37.261880 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "model.examen_ventas.ventas_diarias"} */
+drop table if exists "ventas"."analytics"."ventas_diarias__dbt_backup" cascade
+[0m11:49:37.263067 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.264720 [debug] [Thread-1 (]: On model.examen_ventas.ventas_diarias: Close
+[0m11:49:37.265878 [info ] [Thread-1 (]: 14 of 19 OK created sql table model analytics.ventas_diarias ................... [[32mOK[0m in 0.04s]
+[0m11:49:37.266644 [debug] [Thread-1 (]: Finished running node model.examen_ventas.ventas_diarias
+[0m11:49:37.268226 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b
+[0m11:49:37.268811 [info ] [Thread-1 (]: 15 of 19 START test not_null_ventas_diarias_fecha_venta ........................ [RUN]
+[0m11:49:37.269548 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.examen_ventas.ventas_diarias, now test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b)
+[0m11:49:37.270008 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b
+[0m11:49:37.275740 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b"
+[0m11:49:37.276516 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b
+[0m11:49:37.280103 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b"
+[0m11:49:37.280832 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b"
+[0m11:49:37.281341 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b: BEGIN
+[0m11:49:37.281775 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.284040 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.284531 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b"
+[0m11:49:37.285046 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select fecha_venta
+from "ventas"."analytics"."ventas_diarias"
+where fecha_venta is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.287166 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.288853 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b: ROLLBACK
+[0m11:49:37.289657 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b'
+[0m11:49:37.290119 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b: Close
+[0m11:49:37.291113 [info ] [Thread-1 (]: 15 of 19 PASS not_null_ventas_diarias_fecha_venta .............................. [[32mPASS[0m in 0.02s]
+[0m11:49:37.292148 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b
+[0m11:49:37.292786 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead
+[0m11:49:37.293613 [info ] [Thread-1 (]: 16 of 19 START test not_null_ventas_diarias_ingreso_total ...................... [RUN]
+[0m11:49:37.294629 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_ventas_diarias_fecha_venta.5dc16b0a8b, now test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead)
+[0m11:49:37.295142 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead
+[0m11:49:37.300404 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead"
+[0m11:49:37.301091 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead
+[0m11:49:37.306140 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead"
+[0m11:49:37.307715 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead"
+[0m11:49:37.308568 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead: BEGIN
+[0m11:49:37.309044 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.310676 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.311423 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead"
+[0m11:49:37.312121 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select ingreso_total
+from "ventas"."analytics"."ventas_diarias"
+where ingreso_total is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.314623 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.317161 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead: ROLLBACK
+[0m11:49:37.318153 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead'
+[0m11:49:37.318762 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead: Close
+[0m11:49:37.319806 [info ] [Thread-1 (]: 16 of 19 PASS not_null_ventas_diarias_ingreso_total ............................ [[32mPASS[0m in 0.03s]
+[0m11:49:37.320781 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead
+[0m11:49:37.321699 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d
+[0m11:49:37.322692 [info ] [Thread-1 (]: 17 of 19 START test not_null_ventas_diarias_numero_ventas ...................... [RUN]
+[0m11:49:37.323658 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_ventas_diarias_ingreso_total.3c8cfeeead, now test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d)
+[0m11:49:37.324147 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d
+[0m11:49:37.330754 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d"
+[0m11:49:37.331456 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d
+[0m11:49:37.334485 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d"
+[0m11:49:37.335331 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d"
+[0m11:49:37.335872 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d: BEGIN
+[0m11:49:37.336370 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.338291 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.338949 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d"
+[0m11:49:37.339420 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select numero_ventas
+from "ventas"."analytics"."ventas_diarias"
+where numero_ventas is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.341419 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.343451 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d: ROLLBACK
+[0m11:49:37.344122 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d'
+[0m11:49:37.344600 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d: Close
+[0m11:49:37.345548 [info ] [Thread-1 (]: 17 of 19 PASS not_null_ventas_diarias_numero_ventas ............................ [[32mPASS[0m in 0.02s]
+[0m11:49:37.346295 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d
+[0m11:49:37.346918 [debug] [Thread-1 (]: Began running node test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92
+[0m11:49:37.347625 [info ] [Thread-1 (]: 18 of 19 START test not_null_ventas_diarias_unidades_vendidas .................. [RUN]
+[0m11:49:37.348495 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_ventas_diarias_numero_ventas.8b0573872d, now test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92)
+[0m11:49:37.349332 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92
+[0m11:49:37.354997 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92"
+[0m11:49:37.355767 [debug] [Thread-1 (]: Began executing node test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92
+[0m11:49:37.358925 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92"
+[0m11:49:37.359726 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92"
+[0m11:49:37.360233 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92: BEGIN
+[0m11:49:37.360668 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.362678 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.363193 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92"
+[0m11:49:37.363642 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select unidades_vendidas
+from "ventas"."analytics"."ventas_diarias"
+where unidades_vendidas is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.365554 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:49:37.367329 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92: ROLLBACK
+[0m11:49:37.368137 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92'
+[0m11:49:37.368805 [debug] [Thread-1 (]: On test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92: Close
+[0m11:49:37.369805 [info ] [Thread-1 (]: 18 of 19 PASS not_null_ventas_diarias_unidades_vendidas ........................ [[32mPASS[0m in 0.02s]
+[0m11:49:37.370735 [debug] [Thread-1 (]: Finished running node test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92
+[0m11:49:37.371327 [debug] [Thread-1 (]: Began running node test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459
+[0m11:49:37.372116 [info ] [Thread-1 (]: 19 of 19 START test unique_ventas_diarias_fecha_venta .......................... [RUN]
+[0m11:49:37.372815 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.examen_ventas.not_null_ventas_diarias_unidades_vendidas.3216324b92, now test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459)
+[0m11:49:37.373375 [debug] [Thread-1 (]: Began compiling node test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459
+[0m11:49:37.377925 [debug] [Thread-1 (]: Writing injected SQL for node "test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459"
+[0m11:49:37.378714 [debug] [Thread-1 (]: Began executing node test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459
+[0m11:49:37.381332 [debug] [Thread-1 (]: Writing runtime sql for node "test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459"
+[0m11:49:37.381973 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459"
+[0m11:49:37.382402 [debug] [Thread-1 (]: On test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459: BEGIN
+[0m11:49:37.382878 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:49:37.384504 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.385130 [debug] [Thread-1 (]: Using duckdb connection "test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459"
+[0m11:49:37.385605 [debug] [Thread-1 (]: On test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    fecha_venta as unique_field,
+    count(*) as n_records
+
+from "ventas"."analytics"."ventas_diarias"
+where fecha_venta is not null
+group by fecha_venta
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m11:49:37.387818 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:49:37.389630 [debug] [Thread-1 (]: On test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459: ROLLBACK
+[0m11:49:37.390309 [debug] [Thread-1 (]: Failed to rollback 'test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459'
+[0m11:49:37.390769 [debug] [Thread-1 (]: On test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459: Close
+[0m11:49:37.391800 [info ] [Thread-1 (]: 19 of 19 PASS unique_ventas_diarias_fecha_venta ................................ [[32mPASS[0m in 0.02s]
+[0m11:49:37.392661 [debug] [Thread-1 (]: Finished running node test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459
+[0m11:49:37.395022 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:37.395647 [debug] [MainThread]: On master: BEGIN
+[0m11:49:37.396039 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m11:49:37.397558 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m11:49:37.398049 [debug] [MainThread]: On master: COMMIT
+[0m11:49:37.398438 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:49:37.398795 [debug] [MainThread]: On master: COMMIT
+[0m11:49:37.399802 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m11:49:37.400531 [debug] [MainThread]: On master: Close
+[0m11:49:37.401387 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m11:49:37.401759 [debug] [MainThread]: Connection 'test.examen_ventas.unique_ventas_diarias_fecha_venta.2ea53a6459' was properly closed.
+[0m11:49:37.402297 [info ] [MainThread]: 
+[0m11:49:37.402792 [info ] [MainThread]: Finished running 2 table models, 17 data tests in 0 hours 0 minutes and 0.93 seconds (0.93s).
+[0m11:49:37.406225 [debug] [MainThread]: Command end result
+[0m11:49:37.439514 [debug] [MainThread]: Wrote artifact WritableManifest to /state/dbt/target/manifest.json
+[0m11:49:37.442709 [debug] [MainThread]: Wrote artifact SemanticManifest to /state/dbt/target/semantic_manifest.json
+[0m11:49:37.450436 [debug] [MainThread]: Wrote artifact RunExecutionResult to /state/dbt/target/run_results.json
+[0m11:49:37.450949 [info ] [MainThread]: 
+[0m11:49:37.451519 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m11:49:37.452075 [info ] [MainThread]: 
+[0m11:49:37.452684 [info ] [MainThread]: Done. PASS=19 WARN=0 ERROR=0 SKIP=0 TOTAL=19
+[0m11:49:37.454887 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 2.7124681, "process_in_blocks": "0", "process_kernel_time": 0.867454, "process_mem_max_rss": "147856", "process_out_blocks": "0", "process_user_time": 4.433656}
+[0m11:49:37.455514 [debug] [MainThread]: Command `dbt build` succeeded at 11:49:37.455398 after 2.71 seconds
+[0m11:49:37.455970 [debug] [MainThread]: Flushing usage events
+
+
+============================== 11:52:59.716776 | 3633f411-9e34-4d5c-88b6-2ee05a3fffbb ==============================
+[0m11:52:59.716776 [info ] [MainThread]: Running with dbt=1.9.4
+[0m11:52:59.728362 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/workspace/dbt', 'version_check': 'True', 'debug': 'False', 'log_path': '/state/dbt/logs', 'warn_error': 'None', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt source freshness --project-dir /workspace/dbt --profiles-dir /workspace/dbt', 'static_parser': 'True', 'introspect': 'True', 'target_path': '/state/dbt/target', 'log_format': 'default', 'send_anonymous_usage_stats': 'False'}
+[0m11:53:00.213198 [info ] [MainThread]: Registered adapter: duckdb=1.9.2
+[0m11:53:00.341616 [debug] [MainThread]: checksum: b5597158181700c50f5bc1c71fe28b37a6fb85633dc5323885263678b6bc782c, vars: {}, profile: , target: , version: 1.9.4
+[0m11:53:00.731124 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m11:53:00.731966 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m11:53:00.987465 [debug] [MainThread]: Wrote artifact WritableManifest to /state/dbt/target/manifest.json
+[0m11:53:00.991521 [debug] [MainThread]: Wrote artifact SemanticManifest to /state/dbt/target/semantic_manifest.json
+[0m11:53:01.022948 [info ] [MainThread]: Found 2 models, 17 data tests, 1 source, 426 macros
+[0m11:53:01.026876 [info ] [MainThread]: 
+[0m11:53:01.027746 [info ] [MainThread]: Concurrency: 1 threads (target='local')
+[0m11:53:01.028398 [info ] [MainThread]: 
+[0m11:53:01.029377 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m11:53:01.038076 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_ventas_analytics'
+[0m11:53:01.077637 [debug] [ThreadPool]: Using duckdb connection "list_ventas_analytics"
+[0m11:53:01.078218 [debug] [ThreadPool]: On list_ventas_analytics: BEGIN
+[0m11:53:01.078632 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m11:53:01.099201 [debug] [ThreadPool]: SQL status: OK in 0.020 seconds
+[0m11:53:01.099991 [debug] [ThreadPool]: Using duckdb connection "list_ventas_analytics"
+[0m11:53:01.100850 [debug] [ThreadPool]: On list_ventas_analytics: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "connection_name": "list_ventas_analytics"} */
+select
+      'ventas' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where lower(table_schema) = 'analytics'
+    and lower(table_catalog) = 'ventas'
+  
+[0m11:53:01.144684 [debug] [ThreadPool]: SQL status: OK in 0.043 seconds
+[0m11:53:01.147377 [debug] [ThreadPool]: On list_ventas_analytics: ROLLBACK
+[0m11:53:01.148969 [debug] [ThreadPool]: Failed to rollback 'list_ventas_analytics'
+[0m11:53:01.149447 [debug] [ThreadPool]: On list_ventas_analytics: Close
+[0m11:53:01.151329 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:53:01.151864 [debug] [MainThread]: On master: BEGIN
+[0m11:53:01.152397 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m11:53:01.154363 [debug] [MainThread]: SQL status: OK in 0.002 seconds
+[0m11:53:01.155052 [debug] [MainThread]: On master: COMMIT
+[0m11:53:01.155701 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:53:01.156384 [debug] [MainThread]: On master: COMMIT
+[0m11:53:01.157738 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m11:53:01.158442 [debug] [MainThread]: On master: Close
+[0m11:53:01.166078 [debug] [Thread-1 (]: Began running node source.examen_ventas.ventas_raw.ventas
+[0m11:53:01.166742 [info ] [Thread-1 (]: 1 of 1 START freshness of ventas_raw.ventas .................................... [RUN]
+[0m11:53:01.167472 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_ventas_analytics, now source.examen_ventas.ventas_raw.ventas)
+[0m11:53:01.168012 [debug] [Thread-1 (]: Began compiling node source.examen_ventas.ventas_raw.ventas
+[0m11:53:01.168602 [debug] [Thread-1 (]: Began executing node source.examen_ventas.ventas_raw.ventas
+[0m11:53:01.169322 [debug] [Thread-1 (]: Using duckdb connection "source.examen_ventas.ventas_raw.ventas"
+[0m11:53:01.169852 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: BEGIN
+[0m11:53:01.170309 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m11:53:01.172758 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:53:01.173563 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: COMMIT
+[0m11:53:01.174211 [debug] [Thread-1 (]: Using duckdb connection "source.examen_ventas.ventas_raw.ventas"
+[0m11:53:01.174694 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: COMMIT
+[0m11:53:01.176039 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m11:53:01.191435 [debug] [Thread-1 (]: Using duckdb connection "source.examen_ventas.ventas_raw.ventas"
+[0m11:53:01.192471 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: /* {"app": "dbt", "dbt_version": "1.9.4", "profile_name": "examen_ventas", "target_name": "local", "node_id": "source.examen_ventas.ventas_raw.ventas"} */
+select
+      max(_loaded_at) as max_loaded_at,
+      now() as snapshotted_at
+    from "ventas"."raw"."ventas"
+    
+  
+[0m11:53:01.195572 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m11:53:01.197749 [debug] [Thread-1 (]: On source.examen_ventas.ventas_raw.ventas: Close
+[0m11:53:01.200421 [error] [Thread-1 (]: 1 of 1 ERROR STALE freshness of ventas_raw.ventas .............................. [[31mERROR STALE[0m in 0.03s]
+[0m11:53:01.201472 [debug] [Thread-1 (]: Finished running node source.examen_ventas.ventas_raw.ventas
+[0m11:53:01.202267 [debug] [Thread-4 (]: Marking all children of 'source.examen_ventas.ventas_raw.ventas' to be skipped because of status 'error'. 
+[0m11:53:01.205539 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:53:01.206162 [debug] [MainThread]: On master: BEGIN
+[0m11:53:01.206827 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m11:53:01.209084 [debug] [MainThread]: SQL status: OK in 0.002 seconds
+[0m11:53:01.209626 [debug] [MainThread]: On master: COMMIT
+[0m11:53:01.210051 [debug] [MainThread]: Using duckdb connection "master"
+[0m11:53:01.210436 [debug] [MainThread]: On master: COMMIT
+[0m11:53:01.211742 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m11:53:01.212443 [debug] [MainThread]: On master: Close
+[0m11:53:01.213153 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m11:53:01.213645 [debug] [MainThread]: Connection 'source.examen_ventas.ventas_raw.ventas' was properly closed.
+[0m11:53:01.214115 [info ] [MainThread]: 
+[0m11:53:01.214701 [info ] [MainThread]: Finished running 1 source in 0 hours 0 minutes and 0.19 seconds (0.19s).
+[0m11:53:01.241687 [debug] [MainThread]: Wrote artifact WritableManifest to /state/dbt/target/manifest.json
+[0m11:53:01.245200 [debug] [MainThread]: Wrote artifact SemanticManifest to /state/dbt/target/semantic_manifest.json
+[0m11:53:01.251872 [debug] [MainThread]: Wrote artifact FreshnessResult to /state/dbt/target/sources.json
+[0m11:53:01.252519 [info ] [MainThread]: Done.
+[0m11:53:01.255052 [debug] [MainThread]: Resource report: {"command_name": "freshness", "command_success": false, "command_wall_clock_time": 1.638676, "process_in_blocks": "0", "process_kernel_time": 0.699634, "process_mem_max_rss": "143520", "process_out_blocks": "0", "process_user_time": 3.182338}
+[0m11:53:01.255814 [debug] [MainThread]: Command `dbt source freshness` failed at 11:53:01.255681 after 1.64 seconds
+[0m11:53:01.256523 [debug] [MainThread]: Flushing usage events

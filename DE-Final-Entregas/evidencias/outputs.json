@@ -1,0 +1,22 @@
+{
+  "athena_workgroup_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "de_final_entregas_wg"
+  },
+  "bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "de-final-entregas-daniel-202610"
+  },
+  "glue_database_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "de_final_entregas_db"
+  },
+  "glue_table_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "entregas"
+  }
+}
